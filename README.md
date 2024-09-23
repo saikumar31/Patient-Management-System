@@ -25,73 +25,52 @@ Prerequisites:
 Follow the steps below to set up and run the project locally using Docker.
 
 1. Clone the repository:
-bash
-Copy code
-git clone https://github.com/saikumar31/Patient-Management-System.git
+`git clone https://github.com/saikumar31/Patient-Management-System.git`
+
 2. Navigate to the project directory:
-bash
-Copy code
-cd patient-management-system
-3. Build the Docker containers:
-bash
-Copy code
+`cd patient-management-system`
+
+4. Build the Docker containers:
 docker-compose build
-4. Start the containers:
-bash
-Copy code
-docker-compose up
+
+6. Start the containers:
+`docker-compose up`
 This will start the application, database, and all necessary services.
 
-5. Run database migrations:
+7. Run database migrations:
 Once the Docker containers are up, you need to run the database migrations.
+`docker exec -it patient_management_app bash`
+`php artisan migrate`
 
-bash
-Copy code
-docker exec -it patient_management_app bash
-php artisan migrate
-6. Access the Application:
+8. Access the Application:
 Open your browser and go to:
-
-arduino
-Copy code
-http://localhost:8081
+`http://localhost:8081`
 You should now see the Patient Management System running.
 
-Usage
-
+9.Usage:
 You can create new doctors, patients, and appointments using the web interface at localhost:8081.
 To populate the database with sample data, refer to the next section on Database Seeding.
 
-7.Database Seeding
-
+10.Database Seeding
 If you'd like to populate the database with sample data (doctors, patients, appointments), you can run the following command:
-bash
-Copy code
-docker exec -it patient_management_app bash
-php artisan db:seed
+`docker exec -it patient_management_app bash`
+`php artisan db:seed`
 This will insert demo data into the database.
 
-8. MySQL Access
-
+11. MySQL Access
 You can access mysql database from phpmyadmin
 To access the MySQL database directly, go to:
-
-bash
-Copy code
-http://localhost:8081/phpmyadmin
+`http://localhost:8081/phpmyadmin`
 Username: root
 Password: root
 You can use this interface to manage the database or inspect tables directly.
 
-9. Stopping and Removing Containers
-
+12. Stopping and Removing Containers
 To stop the running Docker containers:
 Use Ctrl + C in the terminal where Docker is running.
 
-10. To completely remove the Docker containers:
-bash
-Copy code
-docker-compose down
+13. To completely remove the Docker containers:
+`docker-compose down`
 This will stop and remove the containers, but the data will still persist unless volumes are explicitly removed.
 
 License
