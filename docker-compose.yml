@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: patient_management_nginx
+    ports:
+      - "8001:80"
+    volumes:
+      - ./patient-management-app:/var/www/html/patient-management-app
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - patient_app
+    networks:
+      - patient_net
+
+  patient_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: patient_management_app
+    volumes:
+      - ./patient-management-app:/var/www/html/patient-management-app
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=mysql
+      - DB_HOST=patient_db
+      - DB_PORT=3306
+      - DB_DATABASE=patient_management
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+    depends_on:
+      - patient_db
+    networks:
+      - patient_net
+
+  patient_db:
+    image: mysql:5.7
+    container_name: patient_management_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: patient_management
+    volumes:
+      - patient_dbdata:/var/lib/mysql
+    ports:
+      - "3307:3306"
+    networks:
+      - patient_net
+
+  patient_phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: patient_management_phpmyadmin
+    environment:
+      PMA_HOST: patient_db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
+    networks:
+      - patient_net
+
+volumes:
+  patient_dbdata:
+
+networks:
+  patient_net:
