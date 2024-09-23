@@ -73,14 +73,6 @@ You should now see the Patient Management System running.
   `docker-compose down`
   This will stop and remove the containers, but the data will still persist unless volumes are explicitly removed.
 
-License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Contact
-
-For any issues, feel free to reach out or open an issue on GitHub.
-
 Notes:
 Make sure Docker is running before executing the commands.
 If you need to run additional Artisan commands, use docker exec -it patient_management_app bash to access the Laravel container.
