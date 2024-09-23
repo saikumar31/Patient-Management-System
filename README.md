@@ -48,30 +48,30 @@ Open your browser and go to:
 You should now see the Patient Management System running.
 
 9.Usage:
-You can create new doctors, patients, and appointments using the web interface at localhost:8081.
-To populate the database with sample data, refer to the next section on Database Seeding.
+  You can create new doctors, patients, and appointments using the web interface at localhost:8081.
+  To populate the database with sample data, refer to the next section on Database Seeding.
 
 10.Database Seeding
-If you'd like to populate the database with sample data (doctors, patients, appointments), you can run the following command:
-`docker exec -it patient_management_app bash`
-`php artisan db:seed`
-This will insert demo data into the database.
+  If you'd like to populate the database with sample data (doctors, patients, appointments), you can run the following command:
+  `docker exec -it patient_management_app bash`
+  `php artisan db:seed`
+  This will insert demo data into the database.
 
 11. MySQL Access
-You can access mysql database from phpmyadmin
-To access the MySQL database directly, go to:
-`http://localhost:8081/phpmyadmin`
-Username: root
-Password: root
-You can use this interface to manage the database or inspect tables directly.
+  You can access mysql database from phpmyadmin
+  To access the MySQL database directly, go to:
+  `http://localhost:8081/phpmyadmin`
+  Username: root
+  Password: root
+  You can use this interface to manage the database or inspect tables directly.
 
 12. Stopping and Removing Containers
-To stop the running Docker containers:
-Use Ctrl + C in the terminal where Docker is running.
+  To stop the running Docker containers:
+  Use Ctrl + C in the terminal where Docker is running.
 
 13. To completely remove the Docker containers:
-`docker-compose down`
-This will stop and remove the containers, but the data will still persist unless volumes are explicitly removed.
+  `docker-compose down`
+  This will stop and remove the containers, but the data will still persist unless volumes are explicitly removed.
 
 License
 
