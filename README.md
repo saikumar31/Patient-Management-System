@@ -39,12 +39,12 @@ This will start the application, database, and all necessary services.
 
 7. Run database migrations:
 Once the Docker containers are up, you need to run the database migrations.
-`docker exec -it patient_management_app bash`
+`docker exec -it patient_management_app bash` and then 
 `php artisan migrate`
 
 8. Access the Application:
 Open your browser and go to:
-`http://localhost:8081`
+`http://localhost:8001`
 You should now see the Patient Management System running.
 
 9.Usage:
